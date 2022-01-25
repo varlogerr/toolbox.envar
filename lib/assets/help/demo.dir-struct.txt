@@ -1,0 +1,5 @@
+├── env1/
+│   ├── env11.sh
+│   └── env12.sh
+├── env2.sh
+└── pathfile.envar

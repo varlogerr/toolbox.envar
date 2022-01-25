@@ -1,0 +1,9 @@
+Print environments stack
+
+Available options:
+  -l, --limit
+    Entries count
+  -v, --verbose (flag)
+    Print with sourced files. Will show all
+    files, that has been sourced during the
+    session (including removed ones)

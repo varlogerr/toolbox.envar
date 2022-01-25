@@ -1,0 +1,28 @@
+Source env paths. If a path is a directory all
+*.{bash,env,sh} files will be loaded, for file
+paths extension doesn't matter
+
+Usage:
+  envar.source [OPTIONS...] [ENVS]
+
+Available options:
+  -D, --deskless (flag)
+    Run in deskless mode, i.e new bash process
+    won't be created
+  -f, --pathfile (multiple)
+    Read env paths list from a file. Empty
+    lines and lines starting with '#' are
+    ignored. Non-absolute paths are resolved
+    relatively to $PWD. Paths prefixed with
+    ':' are resolved relatively to pathfile
+    directory. Example:
+      # resolves to $PWD
+      ./envdir/envfile1.sh
+      # resolves to pathfile directory
+      :/envdir/envfile2.sh
+  --gen-pathfile (flag)
+    Generate pathfile dummy to stdout
+  -n, --name
+    Name a desk environment
+  --
+    End of options

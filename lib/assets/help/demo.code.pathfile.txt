@@ -1,0 +1,9 @@
+# read env paths from a file
+envar.source -n pathfiled -f ./pathfile.envar
+# or, if pathfile has '.envar' extension, it
+# can be loaded without `-f` option
+envar.source -n pathfiled ./pathfile.envar
+# validate envs are loaded
+echo "${E11}"
+# exit environment
+exit

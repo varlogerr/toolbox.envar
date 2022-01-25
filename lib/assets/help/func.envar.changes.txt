@@ -1,0 +1,13 @@
+Print changed files in current environment.
+
+Usage:
+  envar.changes [-v]
+
+Statuses:
+  + - added file
+  - - removed file
+  * - changed file
+Available options:
+  -v, --verbose (flag)
+    Print not only changed file, but all files.
+    Unchanged files will be prefixed with space

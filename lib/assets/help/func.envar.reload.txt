@@ -1,0 +1,2 @@
+Reload env paths. This will reload sourced env
+paths

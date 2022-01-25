@@ -1,0 +1,30 @@
+# create environment with ./env1 env
+# and non-existing ./env3 and ./env4 envs
+envar.source -n pend ./env1 ./env3 ./env4
+# validate env1 env is loaded
+echo "${E11}"
+# list requested and pending env paths
+envar.req
+envar.pending
+# make some changes to the environment:
+# * create missing ./env3 env
+# * remove 1 file from loaded
+#   env
+# * change 1 file from loaded
+#   env
+mkdir ./env3 \
+&& echo 'export E31=31' > ./env3/env31.sh
+rm ./env1/env12.sh
+echo '' >> ./env1/env11.sh
+# view environment changes
+envar.changes
+# apply changes and purge pending
+# ./env4 env
+envar.reload
+envar.purge
+# validate env3 env is loaded
+echo "${E31}"
+# validate pending is clear
+envar.pending
+# exit environment
+exit
