@@ -26,9 +26,7 @@ __envar.append_uniq() {
 __envar.gen_pathfile() {
   [[ ${1} -ne 1 ]] && return 1
 
-  local assetsdir="$(
-    dirname "${BASH_SOURCE[0]}"
-  )/../assets"
+  local assetsdir="${__ENVAR_TOOL_LIBDIR}/assets"
 
   grep -vFx '' "${assetsdir}/pathfile.envar" \
   | sed 's/^/# /g'

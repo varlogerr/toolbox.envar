@@ -1,4 +1,4 @@
-help_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+help_dir="${__ENVAR_TOOL_LIBDIR}/assets/help"
 
 echo "Initial directory structure:"
 cat "${help_dir}/demo.dir-struct.txt" | sed 's/^/  /g'

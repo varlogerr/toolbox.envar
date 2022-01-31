@@ -31,5 +31,16 @@ __iife() {
     done <<< "${unknown_funcs}"
   }
 
+  # export basic dirs
+  __ENVAR_TOOL_ROOTDIR="$(realpath "$(dirname "${src_file}")/..")"
+  __ENVAR_TOOL_LIBDIR="${__ENVAR_TOOL_ROOTDIR}/lib"
+  for var in \
+    __ENVAR_TOOL_ROOTDIR \
+    __ENVAR_TOOL_LIBDIR \
+  ; do
+    [[ -z "$(bash -c 'echo ${'${var}'+x}')" ]] \
+      && export "${var}"
+  done
+
   __envar.bootstrap
 } && __iife

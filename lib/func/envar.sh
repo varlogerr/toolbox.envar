@@ -1,4 +1,8 @@
 ##########
+# This env vars are set from main.sh
+# * __ENVAR_TOOL_ROOTDIR - envar tool root directory
+# * __ENVAR_TOOL_LIBDIR - envar lib directory
+#
 # * __ENVAR_HASHMAP_PATHS - path hash to env path map
 # * __ENVAR_REQUESTED_ENVS - requested env paths hashes
 # * __ENVAR_REAL_ENVS - existing requested env paths hashes
@@ -195,9 +199,7 @@ envar.req() {
 }
 
 envar.help() {
-  local help_dir="$(
-    dirname "$(realpath "${BASH_SOURCE[0]}")"
-  )/../assets/help"
+  local help_dir="${__ENVAR_TOOL_LIBDIR}/assets/help"
 
   declare -A OPTS=(
     [demo]=0

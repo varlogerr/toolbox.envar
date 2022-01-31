@@ -1,4 +1,4 @@
-current_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+current_dir="${__ENVAR_TOOL_LIBDIR}/assets/help"
 for f in \
   env1/env11.sh \
   env1/env12.sh \
