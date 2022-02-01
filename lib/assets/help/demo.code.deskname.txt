@@ -1,0 +1,17 @@
+# desk name can be set with
+# `envar.source -n <name>`
+envar.source -n mydesk ./env2.sh
+# check the prompt has changed.
+# desk name reflects on stack
+# entries names as well, check
+# head entry title
+envar.stack -v
+# exit environment
+exit
+# desk name can also be set with
+# `ENVAR_NAME` variable in an envfile
+echo ENVAR_NAME=mydesk2 >> ./env2.sh
+# check the prompt and desk stack
+envar.stack -v
+# exit environment
+exit

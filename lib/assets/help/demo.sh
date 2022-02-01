@@ -7,18 +7,19 @@ echo
 echo "Demo files content:"
 . "${help_dir}/demo.files-content.sh" | sed 's/^/  /g'
 
-echo
-echo "Demo (anonymous):"
-cat "${help_dir}/demo.code.anonymous.txt" | sed 's/^/  /g'
+declare -A demos_map=(
+  [anonymous]="anonymous"
+  [named]="named"
+  [pathfile]="pathfile"
+  [pending]="pending"
+  [deskname]="desk name"
+)
 
-echo
-echo "Demo (named):"
-cat "${help_dir}/demo.code.named.txt" | sed 's/^/  /g'
-
-echo
-echo "Demo (pathfile):"
-cat "${help_dir}/demo.code.pathfile.txt" | sed 's/^/  /g'
-
-echo
-echo "Demo (pending):"
-cat "${help_dir}/demo.code.pending.txt" | sed 's/^/  /g'
+for k in \
+  anonymous named pathfile \
+  pending deskname \
+; do
+  echo
+  echo "Demo (${demos_map[${k}]}):"
+  cat "${help_dir}/demo.code.${k}.txt" | sed 's/^/  /g'
+done

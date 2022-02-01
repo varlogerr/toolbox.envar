@@ -247,6 +247,14 @@ envar.help() {
   "
 
   echo
+  echo "Exposed envaronment variables:"
+  while read -r l; do
+    [[ -n "${l}" ]] && echo "  * ${l}"
+  done <<< "
+    ENVAR_NAME - desk name
+  "
+
+  echo
   echo "Available functions:"
   for f in $(ls "${help_dir}"/func.envar.*.txt); do
     basename ${f} | cut -d'.' -f2- | cut -d'.' -f-2
