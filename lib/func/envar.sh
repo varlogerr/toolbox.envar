@@ -57,7 +57,12 @@ envar.source() {
     __ENVAR_FILES="${__ENVAR_FILES}" \
     ENVAR_NAME="${OPTS[name]}" \
     ENVAR_BASE_PS1="${ENVAR_BASE_PS1:-${PS1}}" bash
-    return ${?}
+
+    local retcode=${?}
+    [[ ${retcode} -eq 69 ]] \
+      && envar.halt
+
+    return ${retcode}
   }
 
   if [[ -n "${ENVAR_BASE_PS1+x}" ]]; then
@@ -196,6 +201,18 @@ envar.req() {
   __envar.opts.func_help "${FUNCNAME[0]}" "${@}" && return
 
   __envar.hashmap.req_env_paths
+}
+
+envar.halt() {
+  __envar.opts.func_help "${FUNCNAME[0]}" "${@}" && return
+
+  local stack="$(envar.stack)"
+  [[ -n "${stack}" ]] && {
+    [[ $(wc -l <<< "${stack}") -gt 1 ]] \
+      && exit 69 2> /dev/null
+
+    exit 0 2> /dev/null
+  }
 }
 
 envar.help() {

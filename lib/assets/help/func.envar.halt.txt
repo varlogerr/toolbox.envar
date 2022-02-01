@@ -1,0 +1,3 @@
+Exit envar desk stack. I.e. after multiple
+`envar.source` `envar.halt` will return the
+environment to the initial state.
