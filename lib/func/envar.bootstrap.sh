@@ -1,7 +1,4 @@
 __envar.bootstrap() {
-  [[ (-n "${ENVAR_BASE_PS1}" && -n "${ENVAR_NAME}") ]] \
-    && PS1="${ENVAR_BASE_PS1}@${ENVAR_NAME} > "
-
   declare -A OPTS=(
     # force reload even if envfiles has not changed
     [force]=0
@@ -40,6 +37,9 @@ __envar.bootstrap() {
     fhash="$(cut -d':' -f1 <<< "${f}")"
 
     . "${fpath}"
+
+    [[ (-n "${ENVAR_BASE_PS1}" && -n "${ENVAR_NAME}") ]] \
+      && PS1="${ENVAR_BASE_PS1}@${ENVAR_NAME} > "
 
     __ENVAR_HASHMAP_CONTENTS="$(__envar.append \
       "${__ENVAR_HASHMAP_CONTENTS}" \
